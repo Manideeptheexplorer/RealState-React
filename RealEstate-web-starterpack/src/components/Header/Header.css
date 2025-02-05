@@ -1,0 +1,18 @@
+.h-container{
+    /* display: flex;
+    align-items: center; */
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: val(--secondary);
+}
+ .h-wrapper{
+    background: var(--black);
+    color: white;
+ }
+ .h-menu{
+    gap: 2rem;
+ }
+ .h-menu>*:hover{
+    cursor: pointer;
+ }
