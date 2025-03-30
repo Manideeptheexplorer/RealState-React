@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       domain="dev-0ks8ixch5md580yv.us.auth0.com"
       clientId="3uXGGYPVUGFGo9GKrg4hn9hFWpmnFIT5"
       authorizationParams={{
-        redirect_uri:"https://real-state-react-serverside.vercel.app/"
+        redirect_uri:"real-state-react-phi.vercel.app",
       }}
       audience="http://localhost:3000"
       scope="openid profile email"
