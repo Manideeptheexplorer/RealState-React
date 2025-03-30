@@ -86,3 +86,89 @@ export const removeBooking=async(id,email,token)=>{
     throw error;
   }
 }
+
+export const toFav=async(id,email,token)=>{
+  try {
+    await api.post(`./user/toFav/${id}`,
+      {
+        email,
+        
+      },
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    )
+    
+  } catch (error) {
+    toast.error('something went wrong')
+    throw error
+  }
+}
+
+export const allFav=async(email,token)=>{
+  if(!token) return
+  try {
+    const res=await api.post(`/user/allFav`,
+      {
+        email,
+        
+      },
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    )
+    // console.log(res)
+    return res.data.data["favResidenciesID"]
+    
+  } catch (error) {
+    toast.error("something went wrong while fetching")
+    throw error
+  }
+}
+
+export const allBookings=async(email,token)=>{
+  if(!token) return
+  try {
+    const res=await api.post(`/user/allBookings`,
+      {
+        email,
+        
+      },
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    )
+    // console.log(res)
+    return res.data.data["bookedVisits"]
+    
+  } catch (error) {
+    toast.error("something went wrong while fetching")
+    throw error
+  }
+}
+
+export const createResidency = async (data, token) => {
+  console.log(data)
+  try{
+    const res = await api.post(
+      `/residency/create`,
+      {
+        data
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+  }catch(error)
+  {
+    throw error
+  }
+}

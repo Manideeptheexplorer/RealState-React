@@ -8,10 +8,10 @@
     position: relative;
     z-index: 0;
   }
-  .r-card>svg{
+  .heart{
     position: absolute;
-    top: 25px;
-    right: 30px;
+    top: 28px;
+    right: 58px;
     z-index: 1;
   }
   .r-card > img {

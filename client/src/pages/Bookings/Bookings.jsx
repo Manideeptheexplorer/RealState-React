@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PropertyCard from '../../components/PropertyCard.jsx/PropertyCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import useProperties from '../../hooks/useProperties';
-import './Properties.css';
+import '../Properties/Properties.css';
 import {PuffLoader} from 'react-spinners';
 import { property } from 'lodash';
+import UserDetailContext from '../../context/UserDetailContext';
 
-const Properties = () => {
+const Bookings = () => {
   const { data, isError, isLoading } = useProperties();
   const [filter, setFilter] = useState("");
+  const {userDetails: { bookings }} = useContext(UserDetailContext);
   if (isError) {
     return (
       <div className="wrapper">
@@ -38,7 +40,10 @@ const Properties = () => {
         <div className="paddings flexCenter">
           {
             // data.map((card, i)=> (<PropertyCard card={card} key={i}/>))
-            data.filter((property)=>
+            data
+            .filter((property)=>bookings.map((booking)=>booking.id).includes(property.id)
+        )    
+            .filter((property)=>
               property.title.toLowerCase().includes(filter.toLowerCase()) ||
               property.city.toLowerCase().includes(filter.toLowerCase()) ||
               property.country.toLowerCase().includes(filter.toLowerCase())
@@ -51,4 +56,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default Bookings;
